@@ -295,6 +295,7 @@ export function validateComponentName (name: string) {
  * Ensure all props option syntax are normalized into the
  * Object-based format.
  */
+// 处理props参数，props可能是数组或者对象 数组必须是字符串 对象必须是普通的对象
 function normalizeProps (options: Object, vm: ?Component) {
   const props = options.props
   if (!props) return
@@ -326,6 +327,7 @@ function normalizeProps (options: Object, vm: ?Component) {
       vm
     )
   }
+  // 把转换后的参数赋值给options参数
   options.props = res
 }
 
@@ -390,6 +392,9 @@ export function mergeOptions (
   child: Object,
   vm?: Component
 ): Object {
+  // new Vue的时候
+  // parent 是 components created directives filters _base指向Vue本身这个函数
+  // child 是传入的参数
   if (process.env.NODE_ENV !== 'production') {
     checkComponents(child)
   }
@@ -397,9 +402,11 @@ export function mergeOptions (
   if (typeof child === 'function') {
     child = child.options
   }
-
+  // 处理组件的props
   normalizeProps(child, vm)
+  // 处理组件的inject
   normalizeInject(child, vm)
+  // 处理指令
   normalizeDirectives(child)
 
   // Apply extends and mixins on the child options,
@@ -431,6 +438,7 @@ export function mergeOptions (
     const strat = strats[key] || defaultStrat
     options[key] = strat(parent[key], child[key], vm, key)
   }
+  // 返回处理后的options
   return options
 }
 

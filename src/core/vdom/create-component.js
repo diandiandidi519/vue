@@ -113,6 +113,7 @@ export function createComponent (
 
   // plain options object: turn it into a constructor
   if (isObject(Ctor)) {
+    // 创建一个子组件类，继承自Vue
     Ctor = baseCtor.extend(Ctor)
   }
 

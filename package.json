@@ -14,9 +14,9 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "dev": "rollup -w -c scripts/config.js --environment TARGET:web-full-dev",
+    "dev": "rollup -w -c scripts/config.js --sourcemap --environment TARGET:web-full-dev",
     "dev:cjs": "rollup -w -c scripts/config.js --environment TARGET:web-runtime-cjs-dev",
-    "dev:esm": "rollup -w -c scripts/config.js --environment TARGET:web-runtime-esm",
+    "dev:esm": "rollup -w -c scripts/config.js  --sourcemap --environment TARGET:web-runtime-esm",
     "dev:test": "karma start test/unit/karma.dev.config.js",
     "dev:ssr": "rollup -w -c scripts/config.js --environment TARGET:web-server-renderer",
     "dev:compiler": "rollup -w -c scripts/config.js --environment TARGET:web-compiler ",

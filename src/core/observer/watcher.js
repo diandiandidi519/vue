@@ -104,6 +104,7 @@ export default class Watcher {
     let value
     const vm = this.vm
     try {
+      // 在这里调用updateComponent即vm._update(vm._render(), hydrating)
       value = this.getter.call(vm, vm)
     } catch (e) {
       if (this.user) {

@@ -60,6 +60,7 @@ export function initGlobalAPI (Vue: GlobalAPI) {
   // components with in Weex's multi-instance scenarios.
   Vue.options._base = Vue
 
+  // 内置组件注册到Vue.options.components
   extend(Vue.options.components, builtInComponents)
 
   initUse(Vue)
